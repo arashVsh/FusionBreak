@@ -1,0 +1,4 @@
+# Shared installation entry point for the FusionBreak reviewer artifact.
+# Dataset-specific dependency lists remain authoritative.
+-r FusionBreak-RAVDESS_Reviewer/requirements.txt
+-r FusionBreak-CREMA-D_Reviewer/requirements.txt

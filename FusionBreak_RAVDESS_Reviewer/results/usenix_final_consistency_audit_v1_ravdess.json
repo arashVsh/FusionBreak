@@ -1,0 +1,65 @@
+{
+  "dataset": "RAVDESS",
+  "paper_seeds": [
+    42,
+    43,
+    44
+  ],
+  "paper_architectures": [
+    "interaction",
+    "concat",
+    "gated",
+    "group_gated"
+  ],
+  "expected_seed_arch_configs": 12,
+  "completed_seed_arch_configs": 12,
+  "complete": true,
+  "missing_configs": [],
+  "unique_config_sha256": [
+    "bee44ef5ce3e88d456a9c66bdbc0a7c582419db6bdf42af16e95afb0874420e6"
+  ],
+  "all_rows_have_full_eligible_coverage": true,
+  "all_rows_within_linf_budgets": true,
+  "unimodal_checkpoint_consistency_by_seed": {
+    "42": {
+      "audio_sha256": "5e678f654967abcf3d81150189d83198fbd47752cc6fc62dd2302d207200aa26",
+      "video_sha256": "957cdc4ed4e28dde9cc5777656fcc38e1ace0bea86bfa9587aded7a7fe0fc38f",
+      "architectures_present": [
+        "concat",
+        "gated",
+        "group_gated",
+        "interaction"
+      ]
+    },
+    "43": {
+      "audio_sha256": "973a65502463d2f2615417406eb915c2662631c879177324f128268b01e19ccf",
+      "video_sha256": "77b54c9d4def271f721b75dfe20b15f48e1c8532cfc1c5a42fb0189adb42b6cd",
+      "architectures_present": [
+        "concat",
+        "gated",
+        "group_gated",
+        "interaction"
+      ]
+    },
+    "44": {
+      "audio_sha256": "175a1feac9961a58b678e5f25b3c84978b0f98009e288d980957e123cb7ff062",
+      "video_sha256": "e28f926875ecdef10a674b4fc8cc33abfe23a14cd2ba6e04af199a35170881a9",
+      "architectures_present": [
+        "concat",
+        "gated",
+        "group_gated",
+        "interaction"
+      ]
+    }
+  },
+  "methods_per_config": [
+    "FusionBreak",
+    "AdaptiveFusionBreak",
+    "PGD",
+    "CEOnlySelection",
+    "AudioOnlyFusionBreak",
+    "VideoOnlyFusionBreak"
+  ],
+  "fusionbreak_adaptive_only_objective_difference": "detector-evasion penalty",
+  "adaptive_extra_stealth_steps": 0
+}

@@ -1,0 +1,357 @@
+﻿{
+  "dataset": "CREMA-D",
+  "result_version": 1,
+  "seed": 42,
+  "fusion_architecture": "interaction",
+  "train_samples": 5211,
+  "val_samples": 744,
+  "test_samples": 1487,
+  "attacked_clean_samples": 302,
+  "device": "cuda:0",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+  "reference_guard": {
+    "passed": true,
+    "reference_file": "usenix_extras_v1_cremad_seed42_interaction.json",
+    "test_samples": 1487,
+    "eligible_count": 302,
+    "attacked_eligible_samples": 302,
+    "clean_val_consistency_counts_match": true,
+    "clean_test_consistency_counts_match": true
+  },
+  "checkpoint_manifest": {
+    "audio": {
+      "path": "<PROJECT_ROOT>\\fusion_gap_cremad_modular_outputs\\large_files\\checkpoints\\audio_cremad_v2_seed42.pt",
+      "sha256": "49227291a290ebf5fc8502dd9dafe24d4af1dcc63f636688e47a8e91642d2996"
+    },
+    "video": {
+      "path": "<PROJECT_ROOT>\\fusion_gap_cremad_modular_outputs\\large_files\\checkpoints\\video_cremad_v2_seed42.pt",
+      "sha256": "513dbf5071d4fc670fd5cfa4e2a46e893a8c51160861b53cc208b1e921f5bd02"
+    },
+    "fusion": {
+      "path": "<PROJECT_ROOT>\\fusion_gap_cremad_modular_outputs\\large_files\\checkpoints\\fusion_cremad_v2_seed42_interaction.pt",
+      "sha256": "b7e66baaa967a36a4d978d370a5d9334791756e5b582c2df9f1f921c1a65b211"
+    }
+  },
+  "clean_eval": {
+    "audio_acc": 0.43846671149966376,
+    "video_acc": 0.4976462676529926,
+    "fusion_acc": 0.6160053799596503,
+    "all_three_correct_rate": 0.203093476798924,
+    "test_samples": 1487,
+    "all_three_correct_count": 302
+  },
+  "clean_consistency_defense": {
+    "definition": "flag if audio and video predictions agree but fusion predicts another class",
+    "validation": {
+      "counts": {
+        "n": 744,
+        "flagged": 24,
+        "unimodal_agree": 208,
+        "fusion_only_n": 12,
+        "fusion_only_flagged": 12
+      },
+      "rates": {
+        "flag_rate": 0.03225806451612903,
+        "unimodal_agreement_rate": 0.27956989247311825,
+        "flag_rate_given_unimodal_agreement": 0.11538461538461539,
+        "fusion_only_detection_rate": 1.0
+      },
+      "all_three_correct_count": 162,
+      "all_three_correct_rate": 0.21774193548387097
+    },
+    "test": {
+      "counts": {
+        "n": 1487,
+        "flagged": 68,
+        "unimodal_agree": 412,
+        "fusion_only_n": 40,
+        "fusion_only_flagged": 40
+      },
+      "rates": {
+        "flag_rate": 0.04572965702757229,
+        "unimodal_agreement_rate": 0.27706792199058505,
+        "flag_rate_given_unimodal_agreement": 0.1650485436893204,
+        "fusion_only_detection_rate": 1.0
+      },
+      "all_three_correct_count": 302,
+      "all_three_correct_rate": 0.203093476798924
+    }
+  },
+  "comparison_design": {
+    "same_eligible_samples": true,
+    "same_checkpoints": true,
+    "same_steps_restarts_budgets_alphas": true,
+    "matched_random_restart_initializations_within_each_batch": true,
+    "same_candidate_selection_for_fusionbreak_and_adaptive": true,
+    "fusionbreak_vs_adaptive_only_objective_difference": "AdaptiveFusionBreak adds detector-evasion penalty",
+    "adaptive_extra_stealth_steps": 0,
+    "pgd_objective": "fused cross-entropy only",
+    "pgd_selection": "highest final fused CE across restarts; no FOSR-aware candidate selection"
+  },
+  "config_snapshot": {
+    "attack_steps": 80,
+    "random_restarts": 10,
+    "attack_samples_cap": 500,
+    "eps_audio": 0.08,
+    "eps_video": 0.06,
+    "alpha_audio": 0.004,
+    "alpha_video": 0.003,
+    "lambda_fusion_margin": 0.5,
+    "lambda_preserve_margin": 5.0,
+    "lambda_logit_distill": 0.25,
+    "preserve_margin": 0.05,
+    "candidate_eval_interval": 1,
+    "clean_start_first_restart": true,
+    "lambda_detector_evasion": 2.0,
+    "lambda_detector_msp": 0.5,
+    "lambda_detector_mahalanobis": 3.0,
+    "lambda_detector_feature_squeezing": 5.0,
+    "lambda_detector_lid": 0.0,
+    "adaptive_detector_names": [
+      "msp_hendrycks_gimpel",
+      "mahalanobis_lee",
+      "feature_squeezing_xu"
+    ],
+    "adaptive_stealth_steps": 0,
+    "detector_target_fpr": 0.05
+  },
+  "config_sha256": "d348b7610c41818884e1f2371850e85d6295cc8dff1243283e61d395b610b6aa",
+  "attack_metrics": {
+    "FusionBreak": {
+      "counts": {
+        "n": 302,
+        "fusion_fail": 302,
+        "audio_preserved": 301,
+        "video_preserved": 296,
+        "fusion_only_success": 295
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 0.9966887417218543,
+        "video_preservation_rate": 0.9801324503311258,
+        "FOSR": 0.9768211920529801
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.06495376849016607,
+        "video_linf_mean": 0.04869546223160447
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 302,
+          "flagged": 295,
+          "unimodal_agree": 295,
+          "fusion_only_n": 295,
+          "fusion_only_flagged": 295
+        },
+        "rates": {
+          "flag_rate": 0.9768211920529801,
+          "unimodal_agreement_rate": 0.9768211920529801,
+          "flag_rate_given_unimodal_agreement": 1.0,
+          "fusion_only_detection_rate": 1.0
+        }
+      }
+    },
+    "AdaptiveFusionBreak": {
+      "counts": {
+        "n": 302,
+        "fusion_fail": 302,
+        "audio_preserved": 299,
+        "video_preserved": 295,
+        "fusion_only_success": 292
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 0.9900662251655629,
+        "video_preservation_rate": 0.9768211920529801,
+        "FOSR": 0.9668874172185431
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.05764250684258164,
+        "video_linf_mean": 0.04314249931581762
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 302,
+          "flagged": 292,
+          "unimodal_agree": 292,
+          "fusion_only_n": 292,
+          "fusion_only_flagged": 292
+        },
+        "rates": {
+          "flag_rate": 0.9668874172185431,
+          "unimodal_agreement_rate": 0.9668874172185431,
+          "flag_rate_given_unimodal_agreement": 1.0,
+          "fusion_only_detection_rate": 1.0
+        }
+      }
+    },
+    "PGD": {
+      "counts": {
+        "n": 302,
+        "fusion_fail": 302,
+        "audio_preserved": 102,
+        "video_preserved": 0,
+        "fusion_only_success": 0
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 0.33774834437086093,
+        "video_preservation_rate": 0.0,
+        "FOSR": 0.0
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.08000004291534424,
+        "video_linf_mean": 0.06000000238418579
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 302,
+          "flagged": 0,
+          "unimodal_agree": 112,
+          "fusion_only_n": 0,
+          "fusion_only_flagged": 0
+        },
+        "rates": {
+          "flag_rate": 0.0,
+          "unimodal_agreement_rate": 0.3708609271523179,
+          "flag_rate_given_unimodal_agreement": 0.0,
+          "fusion_only_detection_rate": 0.0
+        }
+      }
+    }
+  },
+  "detector_metrics": {
+    "FusionBreak": {
+      "feature_squeezing_xu": {
+        "AUROC": 0.5509626770755669,
+        "AUPR_adv": 0.6316328122490098,
+        "threshold_from_clean_val": 1.999861055612564,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.15562913907284767,
+        "attack_detection_rate_at_threshold": 0.3344370860927152,
+        "clean_score_mean": 1.7946929694639076,
+        "adv_score_mean": 1.620243917856734
+      },
+      "lid_ma": {
+        "AUROC": 0.938971974913381,
+        "AUPR_adv": 0.9432333630100939,
+        "threshold_from_clean_val": 13.995312309265138,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.009933774834437087,
+        "attack_detection_rate_at_threshold": 0.5761589403973509,
+        "clean_score_mean": 8.41222452327905,
+        "adv_score_mean": 15.430532188605
+      },
+      "mahalanobis_lee": {
+        "AUROC": 0.991447743520021,
+        "AUPR_adv": 0.9919933226578498,
+        "threshold_from_clean_val": 67.88819694519043,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.029801324503311258,
+        "attack_detection_rate_at_threshold": 0.9437086092715232,
+        "clean_score_mean": 32.04882249137424,
+        "adv_score_mean": 113.22414980503108
+      },
+      "msp_hendrycks_gimpel": {
+        "AUROC": 0.0454475680891189,
+        "AUPR_adv": 0.3161597347947179,
+        "threshold_from_clean_val": 0.6117277026176453,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0033112582781456954,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 0.08379985658538262,
+        "adv_score_mean": 0.011537926875992326
+      }
+    },
+    "AdaptiveFusionBreak": {
+      "feature_squeezing_xu": {
+        "AUROC": 0.533485373448533,
+        "AUPR_adv": 0.6116838194927614,
+        "threshold_from_clean_val": 1.999861055612564,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.15562913907284767,
+        "attack_detection_rate_at_threshold": 0.37748344370860926,
+        "clean_score_mean": 1.7946929694639076,
+        "adv_score_mean": 1.5258961099247943
+      },
+      "lid_ma": {
+        "AUROC": 0.8655541423621771,
+        "AUPR_adv": 0.8687561306711755,
+        "threshold_from_clean_val": 13.995312309265138,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.009933774834437087,
+        "attack_detection_rate_at_threshold": 0.2682119205298013,
+        "clean_score_mean": 8.41222452327905,
+        "adv_score_mean": 12.36931164059418
+      },
+      "mahalanobis_lee": {
+        "AUROC": 0.9614709881145563,
+        "AUPR_adv": 0.9540631594217754,
+        "threshold_from_clean_val": 67.88819694519043,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.029801324503311258,
+        "attack_detection_rate_at_threshold": 0.652317880794702,
+        "clean_score_mean": 32.04882249137424,
+        "adv_score_mean": 71.9904453959686
+      },
+      "msp_hendrycks_gimpel": {
+        "AUROC": 0.16123196351037236,
+        "AUPR_adv": 0.360594151964414,
+        "threshold_from_clean_val": 0.6117277026176453,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0033112582781456954,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 0.08379985658538262,
+        "adv_score_mean": 0.04036848651652305
+      }
+    },
+    "PGD": {
+      "feature_squeezing_xu": {
+        "AUROC": 0.4651111793342398,
+        "AUPR_adv": 0.5138454649287738,
+        "threshold_from_clean_val": 1.999861055612564,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.15562913907284767,
+        "attack_detection_rate_at_threshold": 0.17880794701986755,
+        "clean_score_mean": 1.7946929694639076,
+        "adv_score_mean": 1.316004887495025
+      },
+      "lid_ma": {
+        "AUROC": 0.9927963685803254,
+        "AUPR_adv": 0.9921063496216254,
+        "threshold_from_clean_val": 13.995312309265138,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.009933774834437087,
+        "attack_detection_rate_at_threshold": 0.8344370860927153,
+        "clean_score_mean": 8.41222452327905,
+        "adv_score_mean": 20.465937039710038
+      },
+      "mahalanobis_lee": {
+        "AUROC": 1.0,
+        "AUPR_adv": 1.0,
+        "threshold_from_clean_val": 67.88819694519043,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.029801324503311258,
+        "attack_detection_rate_at_threshold": 1.0,
+        "clean_score_mean": 32.04882249137424,
+        "adv_score_mean": 184.61777951070016
+      },
+      "msp_hendrycks_gimpel": {
+        "AUROC": 0.0,
+        "AUPR_adv": 0.30767994873356874,
+        "threshold_from_clean_val": 0.6117277026176453,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0033112582781456954,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 0.08379985658538262,
+        "adv_score_mean": 3.9473274685689156e-10
+      }
+    }
+  }
+}

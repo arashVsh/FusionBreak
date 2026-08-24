@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local datasets
+**/RAVDESS/
+**/CREMA-D/
+**/Camera-D/
+**/CREMAD/
+
+# Rebuildable caches
+**/packed_tensor_cache/
+**/detector_cache/
+**/cache/
+
+# Temporary logs and local run artifacts
+*.log
+*.tmp
+*.temp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Keep the frozen reviewer checkpoints and paper-facing result files.
+# Do NOT add broad rules such as *.pt or outputs/ unless you intentionally
+# want to exclude the checkpoints/results required by the artifact.

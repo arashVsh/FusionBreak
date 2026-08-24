@@ -1,0 +1,150 @@
+{
+  "component_ablation": [
+    {
+      "setting": "Fusion CE only",
+      "variant": "fusion_ce_only",
+      "Fusion_ASR_percent": 100.0,
+      "Audio_Pres_percent": 81.26939946018894,
+      "Video_Pres_percent": 12.90907557354926,
+      "FOSR_percent": 9.669365721997302,
+      "time_minutes": 7.44667349166654
+    },
+    {
+      "setting": "Fusion CE + margin",
+      "variant": "fusion_ce_plus_margin",
+      "Fusion_ASR_percent": 100.0,
+      "Audio_Pres_percent": 80.61150472334684,
+      "Video_Pres_percent": 13.566970310391364,
+      "FOSR_percent": 9.669365721997302,
+      "time_minutes": 7.424668289998953
+    },
+    {
+      "setting": "Without preservation",
+      "variant": "without_preservation",
+      "Fusion_ASR_percent": 100.0,
+      "Audio_Pres_percent": 81.26939946018894,
+      "Video_Pres_percent": 13.53407557354926,
+      "FOSR_percent": 9.636470985155196,
+      "time_minutes": 11.037918414999634
+    },
+    {
+      "setting": "Without fused margin",
+      "variant": "without_fusion_margin",
+      "Fusion_ASR_percent": 86.36724021592444,
+      "Audio_Pres_percent": 96.1698717948718,
+      "Video_Pres_percent": 86.53255735492577,
+      "FOSR_percent": 72.25877192982456,
+      "time_minutes": 11.067938441667259
+    },
+    {
+      "setting": "Without distillation",
+      "variant": "without_distillation",
+      "Fusion_ASR_percent": 92.89558029689609,
+      "Audio_Pres_percent": 93.52058029689607,
+      "Video_Pres_percent": 85.15013495276654,
+      "FOSR_percent": 77.38782051282051,
+      "time_minutes": 11.052550996667318
+    },
+    {
+      "setting": "Final-iterate selection",
+      "variant": "final_iterate_selection",
+      "Fusion_ASR_percent": 78.06258434547908,
+      "Audio_Pres_percent": 72.20985155195682,
+      "Video_Pres_percent": 85.13410931174089,
+      "FOSR_percent": 43.16801619433199,
+      "time_minutes": 7.9025836549985495
+    },
+    {
+      "setting": "Full FusionBreak",
+      "variant": "full_fusionbreak",
+      "Fusion_ASR_percent": 92.89558029689609,
+      "Audio_Pres_percent": 94.16160593792173,
+      "Video_Pres_percent": 86.43302968960863,
+      "FOSR_percent": 78.04571524966262,
+      "time_minutes": 11.078803676666576
+    }
+  ],
+  "attack_setting_ablation": [
+    {
+      "setting": "Half budget",
+      "variant": "budget_half",
+      "eps_audio": 0.04,
+      "eps_video": 0.03,
+      "Fusion_ASR_percent": 77.42071524966262,
+      "FOSR_percent": 67.04369095816465,
+      "time_minutes": 11.122628613332926
+    },
+    {
+      "setting": "Default budget",
+      "variant": "full_fusionbreak",
+      "eps_audio": 0.08,
+      "eps_video": 0.06,
+      "Fusion_ASR_percent": 92.89558029689609,
+      "FOSR_percent": 78.04571524966262,
+      "time_minutes": 11.078803676666576
+    },
+    {
+      "setting": "1.5x budget",
+      "variant": "budget_one_and_half",
+      "eps_audio": 0.12,
+      "eps_video": 0.09,
+      "Fusion_ASR_percent": 98.7171052631579,
+      "FOSR_percent": 81.92729419703105,
+      "time_minutes": 11.159534535000178
+    },
+    {
+      "setting": "One restart",
+      "variant": "one_restart",
+      "eps_audio": 0.08,
+      "eps_video": 0.06,
+      "Fusion_ASR_percent": 87.71592442645074,
+      "FOSR_percent": 70.99190283400809,
+      "time_minutes": 1.2663658766658046
+    },
+    {
+      "setting": "Five restarts",
+      "variant": "five_restarts",
+      "eps_audio": 0.08,
+      "eps_video": 0.06,
+      "Fusion_ASR_percent": 92.23768556005399,
+      "FOSR_percent": 76.74679487179488,
+      "time_minutes": 6.57289390166746
+    },
+    {
+      "setting": "Ten restarts",
+      "variant": "full_fusionbreak",
+      "eps_audio": 0.08,
+      "eps_video": 0.06,
+      "Fusion_ASR_percent": 92.89558029689609,
+      "FOSR_percent": 78.04571524966262,
+      "time_minutes": 11.078803676666576
+    },
+    {
+      "setting": "Half steps",
+      "variant": "half_steps",
+      "eps_audio": 0.08,
+      "eps_video": 0.06,
+      "Fusion_ASR_percent": 91.57979082321187,
+      "FOSR_percent": 75.46390013495277,
+      "time_minutes": 6.826709593333847
+    },
+    {
+      "setting": "Default steps",
+      "variant": "full_fusionbreak",
+      "eps_audio": 0.08,
+      "eps_video": 0.06,
+      "Fusion_ASR_percent": 92.89558029689609,
+      "FOSR_percent": 78.04571524966262,
+      "time_minutes": 11.078803676666576
+    },
+    {
+      "setting": "1.5x steps",
+      "variant": "one_and_half_steps",
+      "eps_audio": 0.08,
+      "eps_video": 0.06,
+      "Fusion_ASR_percent": 94.1784750337382,
+      "FOSR_percent": 79.96963562753035,
+      "time_minutes": 19.604680013333077
+    }
+  ]
+}

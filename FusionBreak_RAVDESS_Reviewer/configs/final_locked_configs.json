@@ -1,0 +1,32 @@
+{
+  "model_seed": 7,
+  "random_trials": 128,
+  "search_budget": {
+    "beam_width": 256,
+    "local_search_passes": 10,
+    "restart_count": 24,
+    "neighborhood_candidates": 256,
+    "diversity_per_signature": 3,
+    "annealing_steps": 0
+  },
+  "main": {
+    "model": "extra_trees",
+    "window": 24,
+    "max_displacement": 8,
+    "feedback_delay": 4,
+    "learning_rate": 0.08,
+    "initial_threshold": 0.92,
+    "alpha": 0.1,
+    "recency_decay": 0.995
+  },
+  "second_model": {
+    "model": "histgb",
+    "window": 16,
+    "max_displacement": 4,
+    "feedback_delay": 2,
+    "learning_rate": 0.08,
+    "initial_threshold": 0.92,
+    "alpha": 0.1,
+    "recency_decay": 0.995
+  }
+}

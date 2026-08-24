@@ -1,0 +1,233 @@
+﻿{
+  "dataset": "CREMA-D",
+  "seed": 44,
+  "fusion_architecture": "concat",
+  "checkpoint_preparation": {
+    "trained_missing_checkpoints": true,
+    "missing_before": [
+      "<PROJECT_ROOT>\\fusion_gap_cremad_modular_outputs\\large_files\\checkpoints\\fusion_cremad_v2_seed44_concat.pt"
+    ],
+    "training_metrics": {
+      "audio": {
+        "best_val_acc": 0.48655913978494625,
+        "best_epoch": 9
+      },
+      "video": {
+        "best_val_acc": 0.5161290322580645,
+        "best_epoch": 34
+      },
+      "fusion": {
+        "best_val_acc": 0.646505376344086,
+        "best_epoch": 16
+      }
+    }
+  },
+  "attack_settings": {
+    "attack_steps": 80,
+    "random_restarts": 10,
+    "attack_samples_cap": 500,
+    "eps_audio": 0.08,
+    "eps_video": 0.06,
+    "alpha_audio": 0.004,
+    "alpha_video": 0.003,
+    "lambda_fusion_margin": 0.5,
+    "lambda_preserve_margin": 5.0,
+    "lambda_logit_distill": 0.25,
+    "preserve_margin": 0.05
+  },
+  "eligibility": {
+    "test_samples": 1487,
+    "all_three_correct_count": 352,
+    "all_three_correct_rate": 0.2367182246133154,
+    "attacked_eligible_samples": 352,
+    "eligible_attack_coverage": 1.0,
+    "coverage_note": "If eligible_attack_coverage < 1, test-set fusion-only yield is a lower bound because attack_samples is capped."
+  },
+  "fusion_consistency_defense_clean": {
+    "definition": "flag if audio and video predictions agree but fusion predicts another class",
+    "validation": {
+      "counts": {
+        "n": 744,
+        "flagged": 26,
+        "unimodal_agree": 220,
+        "fusion_only_n": 17,
+        "fusion_only_flagged": 17
+      },
+      "rates": {
+        "flag_rate": 0.03494623655913978,
+        "unimodal_agreement_rate": 0.2956989247311828,
+        "flag_rate_given_unimodal_agreement": 0.11818181818181818,
+        "fusion_only_detection_rate": 1.0
+      },
+      "all_three_correct_count": 172,
+      "all_three_correct_rate": 0.23118279569892472
+    },
+    "test": {
+      "counts": {
+        "n": 1487,
+        "flagged": 52,
+        "unimodal_agree": 454,
+        "fusion_only_n": 25,
+        "fusion_only_flagged": 25
+      },
+      "rates": {
+        "flag_rate": 0.03496973772696705,
+        "unimodal_agreement_rate": 0.3053127101546738,
+        "flag_rate_given_unimodal_agreement": 0.1145374449339207,
+        "fusion_only_detection_rate": 1.0
+      },
+      "all_three_correct_count": 352,
+      "all_three_correct_rate": 0.2367182246133154
+    }
+  },
+  "attacks": {
+    "FusionBreak": {
+      "counts": {
+        "n": 352,
+        "fusion_fail": 352,
+        "audio_preserved": 352,
+        "video_preserved": 338,
+        "fusion_only_success": 338
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 1.0,
+        "video_preservation_rate": 0.9602272727272727,
+        "FOSR": 0.9602272727272727
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 352,
+          "flagged": 338,
+          "unimodal_agree": 338,
+          "fusion_only_n": 338,
+          "fusion_only_flagged": 338
+        },
+        "rates": {
+          "flag_rate": 0.9602272727272727,
+          "unimodal_agreement_rate": 0.9602272727272727,
+          "flag_rate_given_unimodal_agreement": 1.0,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.04865918325429613,
+        "video_linf_mean": 0.0364859016104178
+      },
+      "test_set_fusion_only_yield_lower_bound": 0.2273032952252858
+    },
+    "CEOnlySelection": {
+      "counts": {
+        "n": 352,
+        "fusion_fail": 352,
+        "audio_preserved": 299,
+        "video_preserved": 93,
+        "fusion_only_success": 71
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 0.8494318181818182,
+        "video_preservation_rate": 0.26420454545454547,
+        "FOSR": 0.20170454545454544
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 352,
+          "flagged": 71,
+          "unimodal_agree": 88,
+          "fusion_only_n": 71,
+          "fusion_only_flagged": 71
+        },
+        "rates": {
+          "flag_rate": 0.20170454545454544,
+          "unimodal_agreement_rate": 0.25,
+          "flag_rate_given_unimodal_agreement": 0.8068181818181818,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.04856726730411703,
+        "video_linf_mean": 0.03642603738064116
+      },
+      "test_set_fusion_only_yield_lower_bound": 0.04774714189643578
+    },
+    "AudioOnlyFusionBreak": {
+      "counts": {
+        "n": 352,
+        "fusion_fail": 321,
+        "audio_preserved": 347,
+        "video_preserved": 352,
+        "fusion_only_success": 316
+      },
+      "rates": {
+        "fusion_ASR": 0.9119318181818182,
+        "audio_preservation_rate": 0.9857954545454546,
+        "video_preservation_rate": 1.0,
+        "FOSR": 0.8977272727272727
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 352,
+          "flagged": 316,
+          "unimodal_agree": 347,
+          "fusion_only_n": 316,
+          "fusion_only_flagged": 316
+        },
+        "rates": {
+          "flag_rate": 0.8977272727272727,
+          "unimodal_agreement_rate": 0.9857954545454546,
+          "flag_rate_given_unimodal_agreement": 0.9106628242074928,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.0,
+        "audio_linf_mean": 0.04688642800531604,
+        "video_linf_mean": 0.0
+      },
+      "test_set_fusion_only_yield_lower_bound": 0.2125084061869536
+    },
+    "VideoOnlyFusionBreak": {
+      "counts": {
+        "n": 352,
+        "fusion_fail": 352,
+        "audio_preserved": 352,
+        "video_preserved": 343,
+        "fusion_only_success": 343
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 1.0,
+        "video_preservation_rate": 0.9744318181818182,
+        "FOSR": 0.9744318181818182
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 352,
+          "flagged": 343,
+          "unimodal_agree": 343,
+          "fusion_only_n": 343,
+          "fusion_only_flagged": 343
+        },
+        "rates": {
+          "flag_rate": 0.9744318181818182,
+          "unimodal_agreement_rate": 0.9744318181818182,
+          "flag_rate_given_unimodal_agreement": 1.0,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.0,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.0,
+        "video_linf_mean": 0.026727399534799835
+      },
+      "test_set_fusion_only_yield_lower_bound": 0.23066577000672495
+    }
+  }
+}

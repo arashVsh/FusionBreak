@@ -1,0 +1,296 @@
+﻿{
+  "dataset": "CREMA-D",
+  "result_version": 1,
+  "seed": 43,
+  "fusion_architecture": "gated",
+  "train_samples": 5211,
+  "val_samples": 744,
+  "test_samples": 1487,
+  "eligible_count": 225,
+  "eligible_rate": 0.15131136516476126,
+  "attacked_eligible_samples": 225,
+  "eligible_attack_coverage": 1.0,
+  "device": "cuda:0",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+  "final_main_reference_path": "<PROJECT_ROOT>\\fusion_gap_cremad_modular_outputs\\logs\\usenix_final_controlled_v1_cremad_seed43_gated.json",
+  "reference_fusionbreak_exact_match": true,
+  "reference_fusionbreak_expected_counts": {
+    "n": 225,
+    "fusion_fail": 225,
+    "audio_preserved": 225,
+    "video_preserved": 225,
+    "fusion_only_success": 225
+  },
+  "reference_fusionbreak_rerun_counts": {
+    "n": 225,
+    "fusion_fail": 225,
+    "audio_preserved": 225,
+    "video_preserved": 225,
+    "fusion_only_success": 225
+  },
+  "checkpoint_manifest": {
+    "audio": {
+      "path": "<PROJECT_ROOT>\\fusion_gap_cremad_modular_outputs\\large_files\\checkpoints\\audio_cremad_v2_seed43.pt",
+      "sha256": "a0200cb3bfcb49f287e58eb1e562fae168a7a7d5510929e1a6fe5edf3c52cc12"
+    },
+    "video": {
+      "path": "<PROJECT_ROOT>\\fusion_gap_cremad_modular_outputs\\large_files\\checkpoints\\video_cremad_v2_seed43.pt",
+      "sha256": "2ee717bb18f0c3d46bb5bb9c4fd3b66ca70a2c267d3c999f7e2ec9a1460a89ad"
+    },
+    "fusion": {
+      "path": "<PROJECT_ROOT>\\fusion_gap_cremad_modular_outputs\\large_files\\checkpoints\\fusion_cremad_v2_seed43_gated.pt",
+      "sha256": "11b2b172442582e408a6bfe4cd8e2757900b25c6458285c834e4f413c32bd245"
+    }
+  },
+  "clean_eval": {
+    "audio_acc": 0.4606590450571621,
+    "video_acc": 0.4041694687289845,
+    "fusion_acc": 0.5749831876260928,
+    "all_three_correct_rate": 0.15131136516476126,
+    "test_samples": 1487,
+    "all_three_correct_count": 225
+  },
+  "clean_consistency_defense": {
+    "definition": "flag if audio and video predictions agree but fusion predicts another class",
+    "validation": {
+      "counts": {
+        "n": 744,
+        "flagged": 73,
+        "unimodal_agree": 216,
+        "fusion_only_n": 34,
+        "fusion_only_flagged": 34
+      },
+      "rates": {
+        "flag_rate": 0.09811827956989247,
+        "unimodal_agreement_rate": 0.2903225806451613,
+        "flag_rate_given_unimodal_agreement": 0.33796296296296297,
+        "fusion_only_detection_rate": 1.0
+      },
+      "all_three_correct_count": 112,
+      "all_three_correct_rate": 0.15053763440860216
+    },
+    "test": {
+      "counts": {
+        "n": 1487,
+        "flagged": 117,
+        "unimodal_agree": 400,
+        "fusion_only_n": 55,
+        "fusion_only_flagged": 55
+      },
+      "rates": {
+        "flag_rate": 0.07868190988567586,
+        "unimodal_agreement_rate": 0.26899798251513113,
+        "flag_rate_given_unimodal_agreement": 0.2925,
+        "fusion_only_detection_rate": 1.0
+      },
+      "all_three_correct_count": 225,
+      "all_three_correct_rate": 0.15131136516476126
+    }
+  },
+  "comparison_design": {
+    "paper_seeds": [
+      42,
+      43,
+      44
+    ],
+    "paper_architectures": [
+      "interaction",
+      "concat",
+      "gated",
+      "group_gated"
+    ],
+    "same_final_checkpoints": true,
+    "same_final_eligible_pool": true,
+    "same_steps_restarts_budgets_alphas": true,
+    "same_decision_aware_candidate_selection": true,
+    "same_per_batch_restart_rng_as_reference_fusionbreak": true,
+    "pre_attack_detector_fit_reproduced_for_rng_alignment": true,
+    "generic_detector_metrics_for_extras_computed": false,
+    "fusionbreak_reference_is_check_only": true,
+    "ce_only_objective": "fused cross-entropy only",
+    "audio_only_untouched_video": true,
+    "video_only_untouched_audio": true
+  },
+  "rng_audit": {
+    "per_batch_rng_progression_checks": 15,
+    "all_rng_progression_checks_passed": true
+  },
+  "config_snapshot": {
+    "attack_steps": 80,
+    "random_restarts": 10,
+    "attack_samples_cap": 500,
+    "eps_audio": 0.08,
+    "eps_video": 0.06,
+    "alpha_audio": 0.004,
+    "alpha_video": 0.003,
+    "lambda_fusion_margin": 0.5,
+    "lambda_preserve_margin": 5.0,
+    "lambda_logit_distill": 0.25,
+    "preserve_margin": 0.05,
+    "candidate_eval_interval": 1,
+    "clean_start_first_restart": true,
+    "lambda_detector_evasion": 2.0,
+    "lambda_detector_msp": 0.5,
+    "lambda_detector_mahalanobis": 3.0,
+    "lambda_detector_feature_squeezing": 5.0,
+    "lambda_detector_lid": 0.0,
+    "adaptive_detector_names": [
+      "msp_hendrycks_gimpel",
+      "mahalanobis_lee",
+      "feature_squeezing_xu"
+    ],
+    "adaptive_stealth_steps": 0,
+    "detector_target_fpr": 0.05
+  },
+  "config_sha256": "d348b7610c41818884e1f2371850e85d6295cc8dff1243283e61d395b610b6aa",
+  "attack_metrics": {
+    "FusionBreakReference": {
+      "counts": {
+        "n": 225,
+        "fusion_fail": 225,
+        "audio_preserved": 225,
+        "video_preserved": 225,
+        "fusion_only_success": 225
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 1.0,
+        "video_preservation_rate": 1.0,
+        "FOSR": 1.0
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.022560064527723526,
+        "video_linf_mean": 0.01692007733715905
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 225,
+          "flagged": 225,
+          "unimodal_agree": 225,
+          "fusion_only_n": 225,
+          "fusion_only_flagged": 225
+        },
+        "rates": {
+          "flag_rate": 1.0,
+          "unimodal_agreement_rate": 1.0,
+          "flag_rate_given_unimodal_agreement": 1.0,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.15131136516476126
+    },
+    "CEOnlySelection": {
+      "counts": {
+        "n": 225,
+        "fusion_fail": 225,
+        "audio_preserved": 208,
+        "video_preserved": 41,
+        "fusion_only_success": 33
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 0.9244444444444444,
+        "video_preservation_rate": 0.18222222222222223,
+        "FOSR": 0.14666666666666667
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.06627489010492961,
+        "video_linf_mean": 0.04970661560694377
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 225,
+          "flagged": 33,
+          "unimodal_agree": 36,
+          "fusion_only_n": 33,
+          "fusion_only_flagged": 33
+        },
+        "rates": {
+          "flag_rate": 0.14666666666666667,
+          "unimodal_agreement_rate": 0.16,
+          "flag_rate_given_unimodal_agreement": 0.9166666666666666,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.02219233355749832
+    },
+    "AudioOnlyFusionBreak": {
+      "counts": {
+        "n": 225,
+        "fusion_fail": 212,
+        "audio_preserved": 217,
+        "video_preserved": 225,
+        "fusion_only_success": 204
+      },
+      "rates": {
+        "fusion_ASR": 0.9422222222222222,
+        "audio_preservation_rate": 0.9644444444444444,
+        "video_preservation_rate": 1.0,
+        "FOSR": 0.9066666666666666
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.0,
+        "audio_linf_mean": 0.04168898264567057,
+        "video_linf_mean": 0.0
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 225,
+          "flagged": 204,
+          "unimodal_agree": 217,
+          "fusion_only_n": 204,
+          "fusion_only_flagged": 204
+        },
+        "rates": {
+          "flag_rate": 0.9066666666666666,
+          "unimodal_agreement_rate": 0.9644444444444444,
+          "flag_rate_given_unimodal_agreement": 0.9400921658986175,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.13718897108271688
+    },
+    "VideoOnlyFusionBreak": {
+      "counts": {
+        "n": 225,
+        "fusion_fail": 225,
+        "audio_preserved": 225,
+        "video_preserved": 224,
+        "fusion_only_success": 224
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 1.0,
+        "video_preservation_rate": 0.9955555555555555,
+        "FOSR": 0.9955555555555555
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.0,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.0,
+        "video_linf_mean": 0.016640073988172743
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 225,
+          "flagged": 224,
+          "unimodal_agree": 224,
+          "fusion_only_n": 224,
+          "fusion_only_flagged": 224
+        },
+        "rates": {
+          "flag_rate": 0.9955555555555555,
+          "unimodal_agreement_rate": 0.9955555555555555,
+          "flag_rate_given_unimodal_agreement": 1.0,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.15063887020847344
+    }
+  }
+}

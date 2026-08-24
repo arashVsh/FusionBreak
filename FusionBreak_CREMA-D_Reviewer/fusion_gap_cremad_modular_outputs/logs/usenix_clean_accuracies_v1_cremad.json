@@ -1,0 +1,230 @@
+{
+  "dataset": "CREMA-D",
+  "purpose": "clean-test accuracy audit for final USENIX configurations",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "fusion_architectures": [
+    "interaction",
+    "concat",
+    "gated",
+    "group_gated"
+  ],
+  "consistency_guard_passed": true,
+  "per_config": [
+    {
+      "seed": 42,
+      "fusion_architecture": "interaction",
+      "test_samples": 1487,
+      "audio_acc": 0.43846671149966376,
+      "video_acc": 0.4976462676529926,
+      "fusion_acc": 0.6160053799596503,
+      "all_three_correct_count": 302,
+      "all_three_correct_rate": 0.203093476798924,
+      "expected_all_three_correct_count": 302,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 42,
+      "fusion_architecture": "concat",
+      "test_samples": 1487,
+      "audio_acc": 0.43846671149966376,
+      "video_acc": 0.4976462676529926,
+      "fusion_acc": 0.6866173503698723,
+      "all_three_correct_count": 330,
+      "all_three_correct_rate": 0.2219233355749832,
+      "expected_all_three_correct_count": 330,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 42,
+      "fusion_architecture": "gated",
+      "test_samples": 1487,
+      "audio_acc": 0.43846671149966376,
+      "video_acc": 0.4976462676529926,
+      "fusion_acc": 0.636852723604573,
+      "all_three_correct_count": 304,
+      "all_three_correct_rate": 0.20443846671149965,
+      "expected_all_three_correct_count": 304,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 42,
+      "fusion_architecture": "group_gated",
+      "test_samples": 1487,
+      "audio_acc": 0.43846671149966376,
+      "video_acc": 0.4976462676529926,
+      "fusion_acc": 0.6819098856758574,
+      "all_three_correct_count": 317,
+      "all_three_correct_rate": 0.21318090114324142,
+      "expected_all_three_correct_count": 317,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 43,
+      "fusion_architecture": "interaction",
+      "test_samples": 1487,
+      "audio_acc": 0.4606590450571621,
+      "video_acc": 0.4041694687289845,
+      "fusion_acc": 0.5837256220578345,
+      "all_three_correct_count": 241,
+      "all_three_correct_rate": 0.1620712844653665,
+      "expected_all_three_correct_count": 241,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 43,
+      "fusion_architecture": "concat",
+      "test_samples": 1487,
+      "audio_acc": 0.4606590450571621,
+      "video_acc": 0.4041694687289845,
+      "fusion_acc": 0.718897108271688,
+      "all_three_correct_count": 266,
+      "all_three_correct_rate": 0.1788836583725622,
+      "expected_all_three_correct_count": 266,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 43,
+      "fusion_architecture": "gated",
+      "test_samples": 1487,
+      "audio_acc": 0.4606590450571621,
+      "video_acc": 0.4041694687289845,
+      "fusion_acc": 0.5749831876260928,
+      "all_three_correct_count": 225,
+      "all_three_correct_rate": 0.15131136516476126,
+      "expected_all_three_correct_count": 225,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 43,
+      "fusion_architecture": "group_gated",
+      "test_samples": 1487,
+      "audio_acc": 0.4606590450571621,
+      "video_acc": 0.4041694687289845,
+      "fusion_acc": 0.7054472091459314,
+      "all_three_correct_count": 258,
+      "all_three_correct_rate": 0.17350369872225957,
+      "expected_all_three_correct_count": 258,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 44,
+      "fusion_architecture": "interaction",
+      "test_samples": 1487,
+      "audio_acc": 0.5084061869535978,
+      "video_acc": 0.4667114996637525,
+      "fusion_acc": 0.6408876933422999,
+      "all_three_correct_count": 347,
+      "all_three_correct_rate": 0.23335574983187626,
+      "expected_all_three_correct_count": 347,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 44,
+      "fusion_architecture": "concat",
+      "test_samples": 1487,
+      "audio_acc": 0.5084061869535978,
+      "video_acc": 0.4667114996637525,
+      "fusion_acc": 0.6536650975117687,
+      "all_three_correct_count": 352,
+      "all_three_correct_rate": 0.2367182246133154,
+      "expected_all_three_correct_count": 352,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 44,
+      "fusion_architecture": "gated",
+      "test_samples": 1487,
+      "audio_acc": 0.5084061869535978,
+      "video_acc": 0.4667114996637525,
+      "fusion_acc": 0.6355077336919973,
+      "all_three_correct_count": 334,
+      "all_three_correct_rate": 0.2246133154001345,
+      "expected_all_three_correct_count": 334,
+      "eligibility_guard_passed": true
+    },
+    {
+      "seed": 44,
+      "fusion_architecture": "group_gated",
+      "test_samples": 1487,
+      "audio_acc": 0.5084061869535978,
+      "video_acc": 0.4667114996637525,
+      "fusion_acc": 0.5749831876260928,
+      "all_three_correct_count": 322,
+      "all_three_correct_rate": 0.21654337592468056,
+      "expected_all_three_correct_count": 322,
+      "eligibility_guard_passed": true
+    }
+  ],
+  "per_seed_unimodal": [
+    {
+      "seed": 42,
+      "audio_acc": 0.43846671149966376,
+      "video_acc": 0.4976462676529926
+    },
+    {
+      "seed": 43,
+      "audio_acc": 0.4606590450571621,
+      "video_acc": 0.4041694687289845
+    },
+    {
+      "seed": 44,
+      "audio_acc": 0.5084061869535978,
+      "video_acc": 0.4667114996637525
+    }
+  ],
+  "aggregate": {
+    "aggregation_note": "Mean and sample SD are unweighted across the 12 seed x architecture configurations.",
+    "configs": 12,
+    "clean_test_accuracy_percent": {
+      "audio": {
+        "mean": 46.91773145034745,
+        "sd": 3.0478645191350826,
+        "min": 43.846671149966376,
+        "max": 50.84061869535979
+      },
+      "video": {
+        "mean": 45.61757453485765,
+        "sd": 4.061105602721032,
+        "min": 40.41694687289845,
+        "max": 49.764626765299255
+      },
+      "fusion": {
+        "mean": 64.24568482403049,
+        "sd": 4.934093026460193,
+        "min": 57.49831876260928,
+        "max": 71.8897108271688
+      }
+    },
+    "eligibility_count": {
+      "mean": 299.8333333333333,
+      "sd": 42.41319120130891,
+      "min": 225.0,
+      "max": 352.0
+    },
+    "eligibility_rate_percent": {
+      "mean": 20.16364043936337,
+      "sd": 2.8522657162951526,
+      "min": 15.131136516476126,
+      "max": 23.67182246133154
+    },
+    "unimodal_unique_seed_accuracy_percent": {
+      "audio": {
+        "mean": 46.91773145034745,
+        "sd": 3.573937943589463,
+        "min": 43.846671149966376,
+        "max": 50.84061869535979
+      },
+      "video": {
+        "mean": 45.61757453485765,
+        "sd": 4.7620684303274885,
+        "min": 40.41694687289845,
+        "max": 49.764626765299255
+      },
+      "note": "This deduplicates the repeated unimodal checkpoints across the four fusion architectures. Use the 12-config summary above if you want aggregation to match the paper's main-table convention."
+    }
+  }
+}

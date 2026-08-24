@@ -1,0 +1,79 @@
+{
+  "dataset": "CREMA-D",
+  "result_version": 1,
+  "paper_seeds": [
+    42,
+    43,
+    44
+  ],
+  "paper_architectures": [
+    "interaction",
+    "concat",
+    "gated",
+    "group_gated"
+  ],
+  "expected_configs": 12,
+  "present_configs": 12,
+  "configs_present": [
+    [
+      42,
+      "concat"
+    ],
+    [
+      42,
+      "gated"
+    ],
+    [
+      42,
+      "group_gated"
+    ],
+    [
+      42,
+      "interaction"
+    ],
+    [
+      43,
+      "concat"
+    ],
+    [
+      43,
+      "gated"
+    ],
+    [
+      43,
+      "group_gated"
+    ],
+    [
+      43,
+      "interaction"
+    ],
+    [
+      44,
+      "concat"
+    ],
+    [
+      44,
+      "gated"
+    ],
+    [
+      44,
+      "group_gated"
+    ],
+    [
+      44,
+      "interaction"
+    ]
+  ],
+  "missing_configs": [],
+  "complete": true,
+  "unique_config_sha256": [
+    "d348b7610c41818884e1f2371850e85d6295cc8dff1243283e61d395b610b6aa"
+  ],
+  "all_reference_fusionbreak_exact_match": true,
+  "all_rng_progression_checks_passed": true,
+  "all_full_eligible_coverage": true,
+  "all_audio_only_video_untouched": true,
+  "all_video_only_audio_untouched": true,
+  "generic_detector_metrics_for_extras_computed": false,
+  "note": "FusionBreakReference is a consistency check only. Paper-facing extra methods are CEOnlySelection, AudioOnlyFusionBreak, and VideoOnlyFusionBreak."
+}

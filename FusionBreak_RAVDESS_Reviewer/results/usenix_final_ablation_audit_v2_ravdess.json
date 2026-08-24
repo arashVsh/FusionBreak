@@ -1,0 +1,312 @@
+{
+  "dataset": "RAVDESS",
+  "seed": 42,
+  "expected_architectures": [
+    "interaction",
+    "concat",
+    "gated",
+    "group_gated"
+  ],
+  "architectures_present": [
+    "concat",
+    "gated",
+    "group_gated",
+    "interaction"
+  ],
+  "complete": true,
+  "unique_config_sha256": [
+    "bee44ef5ce3e88d456a9c66bdbc0a7c582419db6bdf42af16e95afb0874420e6"
+  ],
+  "reference_fusionbreak_exact_match_all_completed_architectures": true,
+  "all_variants_use_final_seed42_checkpoints_and_eligible_pool": true,
+  "final_iterate_selection_definition": {
+    "intermediate_candidates": false,
+    "decision_aware_candidate_score": false,
+    "clean_fallback": false,
+    "restart_selection": "highest full continuous FusionBreak objective among terminal iterates"
+  },
+  "base_attack_settings": {
+    "paper_seeds": [
+      42,
+      43,
+      44
+    ],
+    "paper_architectures": [
+      "interaction",
+      "concat",
+      "gated",
+      "group_gated"
+    ],
+    "attack_samples_cap": 500,
+    "attack_steps": 80,
+    "random_restarts": 10,
+    "eps_audio": 0.08,
+    "eps_video": 0.06,
+    "alpha_audio": 0.004,
+    "alpha_video": 0.003,
+    "lambda_fusion_margin": 0.5,
+    "lambda_preserve_margin": 5.0,
+    "lambda_logit_distill": 0.25,
+    "preserve_margin": 0.05,
+    "candidate_eval_interval": 1,
+    "clean_start_first_restart": true,
+    "detector_target_fpr": 0.05,
+    "adaptive_detector_names": [
+      "msp_hendrycks_gimpel",
+      "mahalanobis_lee",
+      "feature_squeezing_xu"
+    ],
+    "lambda_detector_evasion": 2.0,
+    "lambda_detector_msp": 0.5,
+    "lambda_detector_mahalanobis": 3.0,
+    "lambda_detector_feature_squeezing": 5.0,
+    "lambda_detector_lid": 0.0,
+    "adaptive_stealth_steps": 0,
+    "projection": "L_inf ball around clean tensor for both RAVDESS modalities"
+  },
+  "paper_value_deltas": {
+    "component": {
+      "fusion_ce_only": {
+        "fusion_ASR": {
+          "old": 1.0,
+          "new": 1.0,
+          "delta_percentage_points": 0.0
+        },
+        "audio_preservation_rate": {
+          "old": 0.8259,
+          "new": 0.8126939946018894,
+          "delta_percentage_points": -1.3206005398110565
+        },
+        "video_preservation_rate": {
+          "old": 0.1357,
+          "new": 0.12909075573549258,
+          "delta_percentage_points": -0.6609244264507402
+        },
+        "FOSR": {
+          "old": 0.0967,
+          "new": 0.09669365721997301,
+          "delta_percentage_points": -0.0006342780026979966
+        }
+      },
+      "fusion_ce_plus_margin": {
+        "fusion_ASR": {
+          "old": 1.0,
+          "new": 1.0,
+          "delta_percentage_points": 0.0
+        },
+        "audio_preservation_rate": {
+          "old": 0.8323,
+          "new": 0.8061150472334684,
+          "delta_percentage_points": -2.6184952766531655
+        },
+        "video_preservation_rate": {
+          "old": 0.1291,
+          "new": 0.13566970310391363,
+          "delta_percentage_points": 0.6569703103913638
+        },
+        "FOSR": {
+          "old": 0.0901,
+          "new": 0.09669365721997301,
+          "delta_percentage_points": 0.6593657219973015
+        }
+      },
+      "without_preservation": {
+        "fusion_ASR": {
+          "old": 1.0,
+          "new": 1.0,
+          "delta_percentage_points": 0.0
+        },
+        "audio_preservation_rate": {
+          "old": 0.8388,
+          "new": 0.8126939946018894,
+          "delta_percentage_points": -2.6106005398110588
+        },
+        "video_preservation_rate": {
+          "old": 0.1419,
+          "new": 0.1353407557354926,
+          "delta_percentage_points": -0.6559244264507408
+        },
+        "FOSR": {
+          "old": 0.1029,
+          "new": 0.09636470985155196,
+          "delta_percentage_points": -0.6535290148448045
+        }
+      },
+      "without_fusion_margin": {
+        "fusion_ASR": {
+          "old": 0.8637,
+          "new": 0.8636724021592443,
+          "delta_percentage_points": -0.0027597840755677616
+        },
+        "audio_preservation_rate": {
+          "old": 0.9614,
+          "new": 0.961698717948718,
+          "delta_percentage_points": 0.029871794871794144
+        },
+        "video_preservation_rate": {
+          "old": 0.8523,
+          "new": 0.8653255735492578,
+          "delta_percentage_points": 1.3025573549257818
+        },
+        "FOSR": {
+          "old": 0.716,
+          "new": 0.7225877192982456,
+          "delta_percentage_points": 0.6587719298245642
+        }
+      },
+      "without_distillation": {
+        "fusion_ASR": {
+          "old": 0.9352,
+          "new": 0.9289558029689609,
+          "delta_percentage_points": -0.6244197031039178
+        },
+        "audio_preservation_rate": {
+          "old": 0.9418,
+          "new": 0.9352058029689607,
+          "delta_percentage_points": -0.6594197031039251
+        },
+        "video_preservation_rate": {
+          "old": 0.8518,
+          "new": 0.8515013495276653,
+          "delta_percentage_points": -0.029865047233468278
+        },
+        "FOSR": {
+          "old": 0.7805,
+          "new": 0.7738782051282052,
+          "delta_percentage_points": -0.6621794871794817
+        }
+      },
+      "final_iterate_selection": {
+        "fusion_ASR": {
+          "old": 0.89,
+          "new": 0.7806258434547908,
+          "delta_percentage_points": -10.93741565452092
+        },
+        "audio_preservation_rate": {
+          "old": 0.2324,
+          "new": 0.7220985155195682,
+          "delta_percentage_points": 48.969851551956815
+        },
+        "video_preservation_rate": {
+          "old": 0.4189,
+          "new": 0.8513410931174088,
+          "delta_percentage_points": 43.24410931174088
+        },
+        "FOSR": {
+          "old": 0.0516,
+          "new": 0.4316801619433199,
+          "delta_percentage_points": 38.00801619433199
+        }
+      },
+      "full_fusionbreak": {
+        "fusion_ASR": {
+          "old": 0.9286,
+          "new": 0.9289558029689609,
+          "delta_percentage_points": 0.035580296896087216
+        },
+        "audio_preservation_rate": {
+          "old": 0.9546,
+          "new": 0.9416160593792173,
+          "delta_percentage_points": -1.2983940620782675
+        },
+        "video_preservation_rate": {
+          "old": 0.8581,
+          "new": 0.8643302968960863,
+          "delta_percentage_points": 0.623029689608634
+        },
+        "FOSR": {
+          "old": 0.7805,
+          "new": 0.7804571524966262,
+          "delta_percentage_points": -0.004284750337379961
+        }
+      }
+    },
+    "settings": {
+      "budget_half": {
+        "fusion_ASR": {
+          "old": 0.7869,
+          "new": 0.7742071524966262,
+          "delta_percentage_points": -1.269284750337385
+        },
+        "FOSR": {
+          "old": 0.6703,
+          "new": 0.6704369095816465,
+          "delta_percentage_points": 0.01369095816464716
+        }
+      },
+      "full_fusionbreak": {
+        "fusion_ASR": {
+          "old": 0.9286,
+          "new": 0.9289558029689609,
+          "delta_percentage_points": 0.035580296896087216
+        },
+        "FOSR": {
+          "old": 0.7805,
+          "new": 0.7804571524966262,
+          "delta_percentage_points": -0.004284750337379961
+        }
+      },
+      "budget_one_and_half": {
+        "fusion_ASR": {
+          "old": 0.9934,
+          "new": 0.987171052631579,
+          "delta_percentage_points": -0.6228947368420945
+        },
+        "FOSR": {
+          "old": 0.8191,
+          "new": 0.8192729419703104,
+          "delta_percentage_points": 0.017294197031036962
+        }
+      },
+      "one_restart": {
+        "fusion_ASR": {
+          "old": 0.8772,
+          "new": 0.8771592442645074,
+          "delta_percentage_points": -0.0040755735492559175
+        },
+        "FOSR": {
+          "old": 0.7099,
+          "new": 0.7099190283400809,
+          "delta_percentage_points": 0.0019028340080939898
+        }
+      },
+      "five_restarts": {
+        "fusion_ASR": {
+          "old": 0.9156,
+          "new": 0.9223768556005398,
+          "delta_percentage_points": 0.6776855600539866
+        },
+        "FOSR": {
+          "old": 0.7676,
+          "new": 0.7674679487179488,
+          "delta_percentage_points": -0.01320512820511821
+        }
+      },
+      "half_steps": {
+        "fusion_ASR": {
+          "old": 0.916,
+          "new": 0.9157979082321187,
+          "delta_percentage_points": -0.020209176788132943
+        },
+        "FOSR": {
+          "old": 0.761,
+          "new": 0.7546390013495277,
+          "delta_percentage_points": -0.6360998650472349
+        }
+      },
+      "one_and_half_steps": {
+        "fusion_ASR": {
+          "old": 0.9352,
+          "new": 0.941784750337382,
+          "delta_percentage_points": 0.6584750337381928
+        },
+        "FOSR": {
+          "old": 0.7931,
+          "new": 0.7996963562753036,
+          "delta_percentage_points": 0.6596356275303528
+        }
+      }
+    }
+  },
+  "important_note": "Use the new paper_tables JSON after completion. The old manuscript ablation values should be replaced if any rerun value differs."
+}

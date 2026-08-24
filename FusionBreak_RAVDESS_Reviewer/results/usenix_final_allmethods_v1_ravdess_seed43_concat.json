@@ -1,0 +1,652 @@
+{
+  "dataset": "RAVDESS",
+  "result_version": 1,
+  "seed": 43,
+  "fusion_architecture": "concat",
+  "train_samples": 1008,
+  "val_samples": 216,
+  "test_samples": 216,
+  "device": "cuda:0",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+  "checkpoint_manifest": {
+    "audio": {
+      "path": "C:\\Projects\\fusiongap_ravdess_modular_project\\fusion_gap_ravdess_multimodal_outputs\\large_files\\checkpoints\\audio_seed43.pt",
+      "sha256": "973a65502463d2f2615417406eb915c2662631c879177324f128268b01e19ccf"
+    },
+    "video": {
+      "path": "C:\\Projects\\fusiongap_ravdess_modular_project\\fusion_gap_ravdess_multimodal_outputs\\large_files\\checkpoints\\video_seed43.pt",
+      "sha256": "77b54c9d4def271f721b75dfe20b15f48e1c8532cfc1c5a42fb0189adb42b6cd"
+    },
+    "fusion": {
+      "path": "C:\\Projects\\fusiongap_ravdess_modular_project\\fusion_gap_ravdess_multimodal_outputs\\large_files\\checkpoints\\fusion_seed43_concat.pt",
+      "sha256": "fb0abddca53284271c197ba494e851da1ea0f20066cd67da18ce5169d19924e0"
+    }
+  },
+  "clean_validation": {
+    "samples": 216,
+    "audio_acc": 0.5324074074074074,
+    "video_acc": 0.2777777777777778,
+    "fusion_acc": 0.6527777777777778,
+    "all_three_correct_count": 41,
+    "all_three_correct_rate": 0.18981481481481483,
+    "consistency": {
+      "counts": {
+        "n": 216,
+        "flagged": 2,
+        "unimodal_agree": 51,
+        "fusion_only_n": 0,
+        "fusion_only_flagged": 0
+      },
+      "rates": {
+        "flag_rate": 0.009259259259259259,
+        "unimodal_agreement_rate": 0.2361111111111111,
+        "flag_rate_given_unimodal_agreement": 0.0392156862745098,
+        "fusion_only_detection_rate": 0.0
+      }
+    }
+  },
+  "clean_test": {
+    "samples": 216,
+    "audio_acc": 0.5231481481481481,
+    "video_acc": 0.27314814814814814,
+    "fusion_acc": 0.625,
+    "all_three_correct_count": 31,
+    "all_three_correct_rate": 0.14351851851851852,
+    "consistency": {
+      "counts": {
+        "n": 216,
+        "flagged": 0,
+        "unimodal_agree": 43,
+        "fusion_only_n": 0,
+        "fusion_only_flagged": 0
+      },
+      "rates": {
+        "flag_rate": 0.0,
+        "unimodal_agreement_rate": 0.19907407407407407,
+        "flag_rate_given_unimodal_agreement": 0.0,
+        "fusion_only_detection_rate": 0.0
+      }
+    }
+  },
+  "eligibility": {
+    "test_samples": 216,
+    "all_three_correct_count": 31,
+    "all_three_correct_rate": 0.14351851851851852,
+    "attacked_eligible_samples": 31,
+    "eligible_attack_coverage": 1.0
+  },
+  "fusion_consistency_defense": {
+    "definition": "flag if audio and video predictions agree but fusion predicts another class",
+    "clean_validation": {
+      "counts": {
+        "n": 216,
+        "flagged": 2,
+        "unimodal_agree": 51,
+        "fusion_only_n": 0,
+        "fusion_only_flagged": 0
+      },
+      "rates": {
+        "flag_rate": 0.009259259259259259,
+        "unimodal_agreement_rate": 0.2361111111111111,
+        "flag_rate_given_unimodal_agreement": 0.0392156862745098,
+        "fusion_only_detection_rate": 0.0
+      }
+    },
+    "clean_test": {
+      "counts": {
+        "n": 216,
+        "flagged": 0,
+        "unimodal_agree": 43,
+        "fusion_only_n": 0,
+        "fusion_only_flagged": 0
+      },
+      "rates": {
+        "flag_rate": 0.0,
+        "unimodal_agreement_rate": 0.19907407407407407,
+        "flag_rate_given_unimodal_agreement": 0.0,
+        "fusion_only_detection_rate": 0.0
+      }
+    }
+  },
+  "comparison_design": {
+    "paper_seeds": [
+      42,
+      43,
+      44
+    ],
+    "paper_architectures": [
+      "interaction",
+      "concat",
+      "gated",
+      "group_gated"
+    ],
+    "same_eligible_samples_for_all_six_methods": true,
+    "same_checkpoints_for_all_six_methods": true,
+    "same_numerical_attack_budget_where_applicable": true,
+    "matched_random_restart_rng_state_within_each_batch": true,
+    "fusionbreak_vs_adaptive_same_candidate_selection": true,
+    "fusionbreak_vs_adaptive_only_objective_difference": "AdaptiveFusionBreak adds detector-evasion penalty",
+    "adaptive_extra_stealth_steps": 0,
+    "CEOnlySelection": "fused CE objective with the same decision-aware intermediate candidate selection",
+    "PGD": "fused CE objective with final-iterate per-restart selection, no FOSR-aware selection",
+    "single_modality_controls": "one modality perturbed and the other kept exactly clean"
+  },
+  "config_snapshot": {
+    "paper_seeds": [
+      42,
+      43,
+      44
+    ],
+    "paper_architectures": [
+      "interaction",
+      "concat",
+      "gated",
+      "group_gated"
+    ],
+    "attack_samples_cap": 500,
+    "attack_steps": 80,
+    "random_restarts": 10,
+    "eps_audio": 0.08,
+    "eps_video": 0.06,
+    "alpha_audio": 0.004,
+    "alpha_video": 0.003,
+    "lambda_fusion_margin": 0.5,
+    "lambda_preserve_margin": 5.0,
+    "lambda_logit_distill": 0.25,
+    "preserve_margin": 0.05,
+    "candidate_eval_interval": 1,
+    "clean_start_first_restart": true,
+    "detector_target_fpr": 0.05,
+    "adaptive_detector_names": [
+      "msp_hendrycks_gimpel",
+      "mahalanobis_lee",
+      "feature_squeezing_xu"
+    ],
+    "lambda_detector_evasion": 2.0,
+    "lambda_detector_msp": 0.5,
+    "lambda_detector_mahalanobis": 3.0,
+    "lambda_detector_feature_squeezing": 5.0,
+    "lambda_detector_lid": 0.0,
+    "adaptive_stealth_steps": 0,
+    "projection": "L_inf ball around clean tensor for both RAVDESS modalities"
+  },
+  "config_sha256": "bee44ef5ce3e88d456a9c66bdbc0a7c582419db6bdf42af16e95afb0874420e6",
+  "attack_metrics": {
+    "FusionBreak": {
+      "counts": {
+        "n": 31,
+        "fusion_fail": 30,
+        "audio_preserved": 28,
+        "video_preserved": 31,
+        "fusion_only_success": 27
+      },
+      "rates": {
+        "fusion_ASR": 0.967741935483871,
+        "audio_preservation_rate": 0.9032258064516129,
+        "video_preservation_rate": 1.0,
+        "FOSR": 0.8709677419354839
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.07948391668258174,
+        "video_linf_mean": 0.05961291636190107
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 31,
+          "flagged": 27,
+          "unimodal_agree": 28,
+          "fusion_only_n": 27,
+          "fusion_only_flagged": 27
+        },
+        "rates": {
+          "flag_rate": 0.8709677419354839,
+          "unimodal_agreement_rate": 0.9032258064516129,
+          "flag_rate_given_unimodal_agreement": 0.9642857142857143,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.125
+    },
+    "AdaptiveFusionBreak": {
+      "counts": {
+        "n": 31,
+        "fusion_fail": 30,
+        "audio_preserved": 28,
+        "video_preserved": 31,
+        "fusion_only_success": 27
+      },
+      "rates": {
+        "fusion_ASR": 0.967741935483871,
+        "audio_preservation_rate": 0.9032258064516129,
+        "video_preservation_rate": 1.0,
+        "FOSR": 0.8709677419354839
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.07974198556715442,
+        "video_linf_mean": 0.0598064661026001
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 31,
+          "flagged": 27,
+          "unimodal_agree": 28,
+          "fusion_only_n": 27,
+          "fusion_only_flagged": 27
+        },
+        "rates": {
+          "flag_rate": 0.8709677419354839,
+          "unimodal_agreement_rate": 0.9032258064516129,
+          "flag_rate_given_unimodal_agreement": 0.9642857142857143,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.125
+    },
+    "PGD": {
+      "counts": {
+        "n": 31,
+        "fusion_fail": 31,
+        "audio_preserved": 0,
+        "video_preserved": 2,
+        "fusion_only_success": 0
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 0.0,
+        "video_preservation_rate": 0.06451612903225806,
+        "FOSR": 0.0
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.08000004676080519,
+        "video_linf_mean": 0.060000004306916266
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 31,
+          "flagged": 0,
+          "unimodal_agree": 4,
+          "fusion_only_n": 0,
+          "fusion_only_flagged": 0
+        },
+        "rates": {
+          "flag_rate": 0.0,
+          "unimodal_agreement_rate": 0.12903225806451613,
+          "flag_rate_given_unimodal_agreement": 0.0,
+          "fusion_only_detection_rate": 0.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.0
+    },
+    "CEOnlySelection": {
+      "counts": {
+        "n": 31,
+        "fusion_fail": 31,
+        "audio_preserved": 18,
+        "video_preserved": 13,
+        "fusion_only_success": 8
+      },
+      "rates": {
+        "fusion_ASR": 1.0,
+        "audio_preservation_rate": 0.5806451612903226,
+        "video_preservation_rate": 0.41935483870967744,
+        "FOSR": 0.25806451612903225
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.07187100379697738,
+        "video_linf_mean": 0.05390324131135018
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 31,
+          "flagged": 8,
+          "unimodal_agree": 11,
+          "fusion_only_n": 8,
+          "fusion_only_flagged": 8
+        },
+        "rates": {
+          "flag_rate": 0.25806451612903225,
+          "unimodal_agreement_rate": 0.3548387096774194,
+          "flag_rate_given_unimodal_agreement": 0.7272727272727273,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.037037037037037035
+    },
+    "AudioOnlyFusionBreak": {
+      "counts": {
+        "n": 31,
+        "fusion_fail": 28,
+        "audio_preserved": 28,
+        "video_preserved": 31,
+        "fusion_only_success": 25
+      },
+      "rates": {
+        "fusion_ASR": 0.9032258064516129,
+        "audio_preservation_rate": 0.9032258064516129,
+        "video_preservation_rate": 1.0,
+        "FOSR": 0.8064516129032258
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.08000004291534424,
+        "video_linf_max": 0.0,
+        "audio_linf_mean": 0.07935488608575636,
+        "video_linf_mean": 0.0
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 31,
+          "flagged": 25,
+          "unimodal_agree": 28,
+          "fusion_only_n": 25,
+          "fusion_only_flagged": 25
+        },
+        "rates": {
+          "flag_rate": 0.8064516129032258,
+          "unimodal_agreement_rate": 0.9032258064516129,
+          "flag_rate_given_unimodal_agreement": 0.8928571428571429,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.11574074074074074
+    },
+    "VideoOnlyFusionBreak": {
+      "counts": {
+        "n": 31,
+        "fusion_fail": 11,
+        "audio_preserved": 31,
+        "video_preserved": 28,
+        "fusion_only_success": 8
+      },
+      "rates": {
+        "fusion_ASR": 0.3548387096774194,
+        "audio_preservation_rate": 1.0,
+        "video_preservation_rate": 0.9032258064516129,
+        "FOSR": 0.25806451612903225
+      },
+      "perturbation_norms": {
+        "audio_linf_max": 0.0,
+        "video_linf_max": 0.06000000238418579,
+        "audio_linf_mean": 0.0,
+        "video_linf_mean": 0.0546774402741463
+      },
+      "consistency_detector": {
+        "counts": {
+          "n": 31,
+          "flagged": 8,
+          "unimodal_agree": 28,
+          "fusion_only_n": 8,
+          "fusion_only_flagged": 8
+        },
+        "rates": {
+          "flag_rate": 0.25806451612903225,
+          "unimodal_agreement_rate": 0.9032258064516129,
+          "flag_rate_given_unimodal_agreement": 0.2857142857142857,
+          "fusion_only_detection_rate": 1.0
+        }
+      },
+      "test_set_fusion_only_yield": 0.037037037037037035
+    }
+  },
+  "detector_metrics": {
+    "FusionBreak": {
+      "feature_squeezing_xu": {
+        "AUROC": 0.5244536940686785,
+        "AUPR_adv": 0.48814626889962515,
+        "threshold_from_clean_val": 1.9282056987285614,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.06451612903225806,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 1.0872217116336669,
+        "adv_score_mean": 1.1879695723614385
+      },
+      "lid_ma": {
+        "AUROC": 0.7211238293444329,
+        "AUPR_adv": 0.6933242169769684,
+        "threshold_from_clean_val": 13.588099956512451,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.03225806451612903,
+        "attack_detection_rate_at_threshold": 0.03225806451612903,
+        "clean_score_mean": 7.842425577102169,
+        "adv_score_mean": 9.355106922887988
+      },
+      "mahalanobis_lee": {
+        "AUROC": 0.8782518210197712,
+        "AUPR_adv": 0.8785778355535343,
+        "threshold_from_clean_val": 30.163808822631836,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.22580645161290322,
+        "clean_score_mean": 14.973089248903337,
+        "adv_score_mean": 37.14311685869771
+      },
+      "msp_hendrycks_gimpel": {
+        "AUROC": 0.7450572320499479,
+        "AUPR_adv": 0.788037142477022,
+        "threshold_from_clean_val": 0.6917868703603745,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 0.2023160207656122,
+        "adv_score_mean": 0.3819802980269155
+      }
+    },
+    "AdaptiveFusionBreak": {
+      "feature_squeezing_xu": {
+        "AUROC": 0.5359001040582726,
+        "AUPR_adv": 0.49435956488322386,
+        "threshold_from_clean_val": 1.9282056987285614,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.06451612903225806,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 1.0872217116336669,
+        "adv_score_mean": 1.2209562094461532
+      },
+      "lid_ma": {
+        "AUROC": 0.6711758584807492,
+        "AUPR_adv": 0.6362149844309148,
+        "threshold_from_clean_val": 13.588099956512451,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.03225806451612903,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 7.842425577102169,
+        "adv_score_mean": 8.796992578814107
+      },
+      "mahalanobis_lee": {
+        "AUROC": 0.8761706555671176,
+        "AUPR_adv": 0.8750571973294622,
+        "threshold_from_clean_val": 30.163808822631836,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.16129032258064516,
+        "clean_score_mean": 14.973089248903337,
+        "adv_score_mean": 23.94059981069257
+      },
+      "msp_hendrycks_gimpel": {
+        "AUROC": 0.854318418314256,
+        "AUPR_adv": 0.8462026938772209,
+        "threshold_from_clean_val": 0.6917868703603745,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 0.2023160207656122,
+        "adv_score_mean": 0.43791183156351887
+      }
+    },
+    "PGD": {
+      "feature_squeezing_xu": {
+        "AUROC": 0.9042663891779394,
+        "AUPR_adv": 0.9343241006519278,
+        "threshold_from_clean_val": 1.9282056987285614,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.06451612903225806,
+        "attack_detection_rate_at_threshold": 0.7419354838709677,
+        "clean_score_mean": 1.0872217116336669,
+        "adv_score_mean": 1.8322833081887615
+      },
+      "lid_ma": {
+        "AUROC": 0.663891779396462,
+        "AUPR_adv": 0.6876816527593864,
+        "threshold_from_clean_val": 13.588099956512451,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.03225806451612903,
+        "attack_detection_rate_at_threshold": 0.03225806451612903,
+        "clean_score_mean": 7.842425577102169,
+        "adv_score_mean": 9.05959266231906
+      },
+      "mahalanobis_lee": {
+        "AUROC": 0.9864724245577523,
+        "AUPR_adv": 0.9883741612094753,
+        "threshold_from_clean_val": 30.163808822631836,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.8387096774193549,
+        "clean_score_mean": 14.973089248903337,
+        "adv_score_mean": 41.21721747613722
+      },
+      "msp_hendrycks_gimpel": {
+        "AUROC": 0.04890738813735693,
+        "AUPR_adv": 0.3202574025626423,
+        "threshold_from_clean_val": 0.6917868703603745,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 0.2023160207656122,
+        "adv_score_mean": 0.014090015042212701
+      }
+    },
+    "CEOnlySelection": {
+      "feature_squeezing_xu": {
+        "AUROC": 0.7793964620187305,
+        "AUPR_adv": 0.8129078778812602,
+        "threshold_from_clean_val": 1.9282056987285614,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.06451612903225806,
+        "attack_detection_rate_at_threshold": 0.41935483870967744,
+        "clean_score_mean": 1.0872217116336669,
+        "adv_score_mean": 1.6430106268775078
+      },
+      "lid_ma": {
+        "AUROC": 0.7148803329864722,
+        "AUPR_adv": 0.710006213904321,
+        "threshold_from_clean_val": 13.588099956512451,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.03225806451612903,
+        "attack_detection_rate_at_threshold": 0.03225806451612903,
+        "clean_score_mean": 7.842425577102169,
+        "adv_score_mean": 9.610037772886214
+      },
+      "mahalanobis_lee": {
+        "AUROC": 0.9105098855359001,
+        "AUPR_adv": 0.9184202095292646,
+        "threshold_from_clean_val": 30.163808822631836,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.4838709677419355,
+        "clean_score_mean": 14.973089248903337,
+        "adv_score_mean": 32.8470896444013
+      },
+      "msp_hendrycks_gimpel": {
+        "AUROC": 0.5598335067637877,
+        "AUPR_adv": 0.6870486128466995,
+        "threshold_from_clean_val": 0.6917868703603745,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.03225806451612903,
+        "clean_score_mean": 0.2023160207656122,
+        "adv_score_mean": 0.29107153800226027
+      }
+    },
+    "AudioOnlyFusionBreak": {
+      "feature_squeezing_xu": {
+        "AUROC": 0.5473465140478668,
+        "AUPR_adv": 0.5083324167489979,
+        "threshold_from_clean_val": 1.9282056987285614,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.06451612903225806,
+        "attack_detection_rate_at_threshold": 0.03225806451612903,
+        "clean_score_mean": 1.0872217116336669,
+        "adv_score_mean": 1.2422134561404106
+      },
+      "lid_ma": {
+        "AUROC": 0.659729448491155,
+        "AUPR_adv": 0.6025810390874801,
+        "threshold_from_clean_val": 13.588099956512451,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.03225806451612903,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 7.842425577102169,
+        "adv_score_mean": 8.523112543167606
+      },
+      "mahalanobis_lee": {
+        "AUROC": 0.7970863683662851,
+        "AUPR_adv": 0.7722849572299697,
+        "threshold_from_clean_val": 30.163808822631836,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 14.973089248903337,
+        "adv_score_mean": 20.580570374765703
+      },
+      "msp_hendrycks_gimpel": {
+        "AUROC": 0.9250780437044746,
+        "AUPR_adv": 0.927331544739272,
+        "threshold_from_clean_val": 0.6917868703603745,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 0.2023160207656122,
+        "adv_score_mean": 0.5072921610647633
+      }
+    },
+    "VideoOnlyFusionBreak": {
+      "feature_squeezing_xu": {
+        "AUROC": 0.4297606659729449,
+        "AUPR_adv": 0.43840836261380906,
+        "threshold_from_clean_val": 1.9282056987285614,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.06451612903225806,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 1.0872217116336669,
+        "adv_score_mean": 0.9438059354020704
+      },
+      "lid_ma": {
+        "AUROC": 0.6576482830385016,
+        "AUPR_adv": 0.682136661027341,
+        "threshold_from_clean_val": 13.588099956512451,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.03225806451612903,
+        "attack_detection_rate_at_threshold": 0.03225806451612903,
+        "clean_score_mean": 7.842425577102169,
+        "adv_score_mean": 9.377581350265011
+      },
+      "mahalanobis_lee": {
+        "AUROC": 0.7377731529656607,
+        "AUPR_adv": 0.7815434936457515,
+        "threshold_from_clean_val": 30.163808822631836,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.22580645161290322,
+        "clean_score_mean": 14.973089248903337,
+        "adv_score_mean": 31.751403900884814
+      },
+      "msp_hendrycks_gimpel": {
+        "AUROC": 0.6618106139438086,
+        "AUPR_adv": 0.691497079635537,
+        "threshold_from_clean_val": 0.6917868703603745,
+        "target_clean_FPR": 0.05,
+        "clean_test_FPR_at_threshold": 0.0,
+        "attack_detection_rate_at_threshold": 0.0,
+        "clean_score_mean": 0.2023160207656122,
+        "adv_score_mean": 0.30239097149141375
+      }
+    }
+  }
+}

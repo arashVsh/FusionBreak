@@ -1,0 +1,56 @@
+{
+  "aggregation_note": "mean/sd are unweighted across the 12 seed x architecture configurations; weighted values pool by eligible-count weights",
+  "rows": [
+    {
+      "attack": "CEOnlySelection",
+      "configs": 12,
+      "total_eligible": 3598,
+      "Fusion_ASR_mean_percent": 100.0,
+      "Fusion_ASR_sd_percent": 0.0,
+      "Audio_Pres_mean_percent": 89.41596547692657,
+      "Audio_Pres_sd_percent": 3.300762274930946,
+      "Video_Pres_mean_percent": 22.702409736024343,
+      "Video_Pres_sd_percent": 5.271421812441449,
+      "FOSR_mean_percent": 18.67682780422202,
+      "FOSR_sd_percent": 5.050921725748872,
+      "weighted_FOSR_percent": 18.649249583101724,
+      "weighted_Fusion_ASR_percent": 100.0,
+      "weighted_Audio_Pres_percent": 89.18843802112285,
+      "weighted_Video_Pres_percent": 22.623679822123403
+    },
+    {
+      "attack": "AudioOnlyFusionBreak",
+      "configs": 12,
+      "total_eligible": 3598,
+      "Fusion_ASR_mean_percent": 87.40740744082808,
+      "Fusion_ASR_sd_percent": 17.622691813107945,
+      "Audio_Pres_mean_percent": 98.06341455720374,
+      "Audio_Pres_sd_percent": 1.7270445637597696,
+      "Video_Pres_mean_percent": 100.0,
+      "Video_Pres_sd_percent": 0.0,
+      "FOSR_mean_percent": 85.47082199803181,
+      "FOSR_sd_percent": 18.75067612148847,
+      "weighted_FOSR_percent": 84.49138410227904,
+      "weighted_Fusion_ASR_percent": 86.49249583101724,
+      "weighted_Audio_Pres_percent": 97.9988882712618,
+      "weighted_Video_Pres_percent": 100.0
+    },
+    {
+      "attack": "VideoOnlyFusionBreak",
+      "configs": 12,
+      "total_eligible": 3598,
+      "Fusion_ASR_mean_percent": 100.0,
+      "Fusion_ASR_sd_percent": 0.0,
+      "Audio_Pres_mean_percent": 100.0,
+      "Audio_Pres_sd_percent": 0.0,
+      "Video_Pres_mean_percent": 98.24927430412384,
+      "Video_Pres_sd_percent": 1.5194502954352116,
+      "FOSR_mean_percent": 98.24927430412384,
+      "FOSR_sd_percent": 1.5194502954352116,
+      "weighted_FOSR_percent": 98.11006114508059,
+      "weighted_Fusion_ASR_percent": 100.0,
+      "weighted_Audio_Pres_percent": 100.0,
+      "weighted_Video_Pres_percent": 98.11006114508059
+    }
+  ]
+}
